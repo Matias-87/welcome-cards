@@ -1,22 +1,16 @@
 <div class="box">
-    <div [class.rotate]="rotateClass" class="box__content rotate2"
-        [ngStyle]="{
+    <div [class.rotate]="rotateClass" class="box__content rotate2" [ngStyle]="{
             'background-color': styleConfig?.value.bgColor,
             'border': !styleConfig?.value.borderCheck ? 'none' : '5px solid',
             'border-color': styleConfig?.value.borderColor
         }">
         <div class="box__front">
             <div>
-                <h1 class="text-center text-break"  
-                    [ngStyle]="{
+                <h1 class="text-center text-break" [ngStyle]="{
                         'color': styleConfig?.value.textColor,
                         'text-decoration': !styleConfig?.value.underlineCheck ? 'none' : 'underline',
                         'text-decoration-color': styleConfig?.value.underlineColor
-<<<<<<< HEAD
                     }" style="font-size: clamp(50px, 25vw, 160px);">
-=======
-                    }">
->>>>>>> d8ab1746f3c8ff120d598a4d75bffcc8981e8772
                     {{styleConfig?.value.textTitle}}
                 </h1>
                 <i (click)="addRotateClass()" class="bi bi-arrow-clockwise icon-rotate rotateButton"></i>

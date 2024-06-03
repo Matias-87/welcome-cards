@@ -1,20 +1,11 @@
 <div class="editor-container">
-<<<<<<< HEAD
-    <div class="editor p-4 overflow-auto no-scroll text-light bg-dark border border-2 border-secondary-subtle rounded-4">
-=======
     <div
-        class="editor m-4 p-4 overflow-auto no-scroll text-light bg-dark border border-2 border-secondary-subtle rounded-4">
->>>>>>> d8ab1746f3c8ff120d598a4d75bffcc8981e8772
+        class="editor p-4 overflow-auto no-scroll text-light bg-dark border border-2 border-secondary-subtle rounded-4">
         <h1 class="text-center display-4 m-4">Card Editor</h1>
         <form [formGroup]="profileForm">
             <div class="form-floating mb-3">
-                <textarea class="form-control" formControlName="textTitle" placeholder="Leave a comment here"
-                    id="text-Title"></textarea>
-<<<<<<< HEAD
-                <label for="text-Title" class="text-secondary">Title Text</label>
-=======
-                <label for="text-Title" class="text-secondary">Comments</label>
->>>>>>> d8ab1746f3c8ff120d598a4d75bffcc8981e8772
+                <textarea class="form-control" formControlName="textTitle" id="title-content" placeholder="Leave a comment here" ></textarea>
+                <label for="title-content" class="text-secondary">Text Title</label>
             </div>
             <label for="text-Size" class="form-label">Example range</label>
             <input type="range" formControlName="textSize" class="form-range" min="60" max="160" id="text-Size">
@@ -55,11 +46,6 @@
         </form>
         <button type="submit" [disabled]="!profileForm.valid" (click)="onSubmit()">Console.log()</button>
     </div>
-<<<<<<< HEAD
     <div class="editor editor-card p-4 bg-dark border border-2 border-secondary-subtle overflow-hidden rounded-4">
-=======
-    <div class="editor m-4 p-4 bg-dark border border-2 border-secondary-subtle overflow-hidden rounded-4">
->>>>>>> d8ab1746f3c8ff120d598a4d75bffcc8981e8772
         <app-welcome-card [styleConfig]="profileForm"></app-welcome-card>
     </div>
-</div>
