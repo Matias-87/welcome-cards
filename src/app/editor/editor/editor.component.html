@@ -1,0 +1,65 @@
+<div class="editor-container">
+<<<<<<< HEAD
+    <div class="editor p-4 overflow-auto no-scroll text-light bg-dark border border-2 border-secondary-subtle rounded-4">
+=======
+    <div
+        class="editor m-4 p-4 overflow-auto no-scroll text-light bg-dark border border-2 border-secondary-subtle rounded-4">
+>>>>>>> d8ab1746f3c8ff120d598a4d75bffcc8981e8772
+        <h1 class="text-center display-4 m-4">Card Editor</h1>
+        <form [formGroup]="profileForm">
+            <div class="form-floating mb-3">
+                <textarea class="form-control" formControlName="textTitle" placeholder="Leave a comment here"
+                    id="text-Title"></textarea>
+<<<<<<< HEAD
+                <label for="text-Title" class="text-secondary">Title Text</label>
+=======
+                <label for="text-Title" class="text-secondary">Comments</label>
+>>>>>>> d8ab1746f3c8ff120d598a4d75bffcc8981e8772
+            </div>
+            <label for="text-Size" class="form-label">Example range</label>
+            <input type="range" formControlName="textSize" class="form-range" min="60" max="160" id="text-Size">
+            <div class="row mb-3">
+                <div class="col">
+                    <label for="bg-color">Background Color: </label>
+                    <input class="form-control" id="bg-color" type="color" formControlName="bgColor" value="#ffffff">
+                </div>
+                <div class="col">
+                    <label for="bg-text">Text Color: </label>
+                    <input class="form-control" id="bg-text" type="color" formControlName="textColor" value="#ffffff">
+                </div>
+            </div>
+            <div class="row mb-3">
+                <div class="col">
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" value="" formControlName="underlineCheck"
+                            id="underlineCheck" (click)="isUnderlineChecked()">
+                        <label class="form-check-label" for="underlineCheck">
+                            Underline Text Color:
+                        </label>
+                    </div>
+                    <input class="form-control" id="underline-color" type="color" formControlName="underlineColor"
+                        value="#ffffff">
+                </div>
+                <div class="col">
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" value="" formControlName="borderCheck"
+                            id="boderCheck" (click)="isBorderChecked()">
+                        <label class="form-check-label" for="borderCheck">
+                            Border Text Color:
+                        </label>
+                    </div>
+                    <input class="form-control" id="border-color" type="color" formControlName="borderColor"
+                        value="#ffffff">
+                </div>
+            </div>
+        </form>
+        <button type="submit" [disabled]="!profileForm.valid" (click)="onSubmit()">Console.log()</button>
+    </div>
+<<<<<<< HEAD
+    <div class="editor editor-card p-4 bg-dark border border-2 border-secondary-subtle overflow-hidden rounded-4">
+=======
+    <div class="editor m-4 p-4 bg-dark border border-2 border-secondary-subtle overflow-hidden rounded-4">
+>>>>>>> d8ab1746f3c8ff120d598a4d75bffcc8981e8772
+        <app-welcome-card [styleConfig]="profileForm"></app-welcome-card>
+    </div>
+</div>

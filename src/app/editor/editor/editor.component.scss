@@ -1,0 +1,47 @@
+.editor-container {
+    display: flex;
+    height: 100%;
+<<<<<<< HEAD
+    width: 100vw;
+    // color: white;
+    justify-content: space-around;
+    align-items: center;
+    padding: 20px;
+    gap: 20px;
+=======
+    width: 100%;
+    // color: white;
+    justify-content: space-around;
+>>>>>>> d8ab1746f3c8ff120d598a4d75bffcc8981e8772
+}
+
+.editor {
+    width: 600px;
+<<<<<<< HEAD
+
+    &::-webkit-scrollbar {
+        display: none;
+    }
+}
+
+.editor-card {
+    height: 600px;
+}
+
+@media (max-width: 1300px) {
+    .editor-container {
+        flex-direction: column;
+    }
+
+    .editor {
+        width: 100%;
+        max-width: 600px;
+    }
+=======
+    // margin: 20px;
+
+    &::-webkit-scrollbar{
+        display: none;
+    }
+>>>>>>> d8ab1746f3c8ff120d598a4d75bffcc8981e8772
+}
