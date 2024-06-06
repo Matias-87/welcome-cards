@@ -9,8 +9,9 @@
                 <h1 class="text-center text-break" [ngStyle]="{
                         'color': styleConfig?.value.textColor,
                         'text-decoration': !styleConfig?.value.underlineCheck ? 'none' : 'underline',
-                        'text-decoration-color': styleConfig?.value.underlineColor
-                    }" style="font-size: clamp(50px, 25vw, 160px);">
+                        'text-decoration-color': styleConfig?.value.underlineColor,
+                        'font-size': 'min(10vw,' + styleConfig?.value.textSize +'px)'
+                    }">
                     {{styleConfig?.value.textTitle}}
                 </h1>
                 <i (click)="addRotateClass()" class="bi bi-arrow-clockwise icon-rotate rotateButton"></i>

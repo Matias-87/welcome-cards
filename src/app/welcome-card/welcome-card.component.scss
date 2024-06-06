@@ -68,15 +68,15 @@
 // }
 
 
-h1 {
+// h1 {
     // color: white;
     // font-size: clamp(50px, 25vw, 160px);
     // font-size: 10vw;
-    font-size: clamp(50px, 25vw, 160px);
     // text-decoration: underline;
     // text-decoration-color: red;
     // flex-shrink: 0;
-}
+    // object-fit: contain;
+// }
 
 .loki-title {
     text-decoration: none;
@@ -98,8 +98,8 @@ h1 {
 }
 
 @media (max-height: 600px) {
-    h1 {
-        // color: blue;
-        font-size: 20vh;
-    }
+    // h1 {
+    //     // color: blue;
+    //     font-size: 20vh;
+    // }
 }
