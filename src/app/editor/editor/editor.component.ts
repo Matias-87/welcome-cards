@@ -21,7 +21,9 @@ export class EditorComponent {
     borderCheck: new FormControl(true),
     borderColor: new FormControl('#000000'),
     textTitle: new FormControl(''),
-    textSize: new FormControl(110)
+    textSize: new FormControl(110),
+    bgButtonColor: new FormControl('#000000'),
+    iconColor: new FormControl('#ffffff')
   })
 
 

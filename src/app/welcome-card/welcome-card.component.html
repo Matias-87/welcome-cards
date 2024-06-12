@@ -14,11 +14,17 @@
                     }">
                     {{styleConfig?.value.textTitle}}
                 </h1>
-                <i (click)="addRotateClass()" class="bi bi-arrow-clockwise icon-rotate rotateButton"></i>
+                <i (click)="addRotateClass()" class="bi bi-arrow-clockwise icon-rotate rotateButton" [ngStyle]="{
+                    'color': styleConfig?.value.iconColor,
+                    'background-color': styleConfig?.value.bgButtonColor,
+                }"></i>
             </div>
         </div>
         <div class="box__back">
-            <i (click)="addRotateClass()" class="bi bi-arrow-clockwise icon-rotate rotateButton"></i>
+            <i (click)="addRotateClass()" class="bi bi-arrow-clockwise icon-rotate rotateButton"[ngStyle]="{
+                'color': styleConfig?.value.iconColor,
+                'background-color': styleConfig?.value.bgButtonColor,
+            }"></i>
             <!-- <app-my-info></app-my-info> -->
         </div>
     </div>

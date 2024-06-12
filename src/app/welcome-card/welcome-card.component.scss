@@ -44,16 +44,21 @@
 }
 
 .icon-rotate {
+    height: 50px;
+    width: 50px;
     position: absolute;
     right: 0;
     top: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     margin: 10px;
     font-size: 30px;
+    border-radius: 50px;
     color: white;
     transition: all .5s ease;
 
     &:hover {
-        color: rebeccapurple;
         transform: scale(1.1);
     }
 }

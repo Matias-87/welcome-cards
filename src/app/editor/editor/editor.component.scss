@@ -16,6 +16,7 @@
 .editor {
     width: 600px;
     height: 600px;
+    min-height: 600px;
 
     &::-webkit-scrollbar {
         display: none;

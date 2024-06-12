@@ -7,7 +7,7 @@
                 <textarea class="form-control" formControlName="textTitle" id="title-content" placeholder="Leave a comment here" ></textarea>
                 <label for="title-content" class="text-secondary">Text Title</label>
             </div>
-            <label for="text-Size" class="form-label">Example range</label>
+            <label for="text-Size" class="form-label">Max Font Size:</label>
             <input type="range" formControlName="textSize" class="form-range" min="60" max="160" id="text-Size">
             <div class="row mb-3">
                 <div class="col">
@@ -17,6 +17,18 @@
                 <div class="col">
                     <label for="bg-text">Text Color: </label>
                     <input class="form-control" id="bg-text" type="color" formControlName="textColor" value="#ffffff">
+                </div>
+            </div>
+            <div class="row mb-3">
+                <div class="col">
+                    <label for="bg-button-color">Background Button Color: </label>
+                    <input class="form-control" id="bg-button-color" type="color" formControlName="bgButtonColor"
+                        value="#ffffff">
+                </div>
+                <div class="col">
+                    <label for="icon-color">Icon Color: </label>
+                    <input class="form-control" id="icon-color" type="color" formControlName="iconColor"
+                        value="#ffffff">
                 </div>
             </div>
             <div class="row mb-3">
