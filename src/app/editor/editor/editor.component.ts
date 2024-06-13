@@ -1,18 +1,26 @@
-import { Component, OnChanges, OnInit, SimpleChanges } from '@angular/core';
+import { Component, OnChanges, OnInit, SimpleChanges, inject } from '@angular/core';
 import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { WelcomeCardComponent } from '../../welcome-card/welcome-card.component';
+import { CardsInfoService } from '../../data-access/cards-info.service';
+import { AsyncPipe } from '@angular/common';
+import { CardsData } from '../../interfaces/cards-data.interface';
 
 @Component({
   selector: 'app-editor',
   standalone: true,
   imports: [
     ReactiveFormsModule,
-    WelcomeCardComponent
+    WelcomeCardComponent,
+    AsyncPipe
   ],
   templateUrl: './editor.component.html',
   styleUrl: './editor.component.scss'
 })
 export class EditorComponent {
+  private _cardsInfoService = inject(CardsInfoService);
+
+  // cardsInfo$ = this._cardsInfoService.getCardsInfo();
+
   profileForm = new FormGroup({
     bgColor: new FormControl('#ffffff'),
     textColor: new FormControl('#000000'),
@@ -35,7 +43,17 @@ export class EditorComponent {
   //   })
   // }
 
-  onSubmit() {
+  async onSubmit() {
+    if(this.profileForm.invalid) return;
+
+    const cardData = this.profileForm.value as CardsData;
+
+    try {
+      const doc = await this._cardsInfoService.addCardInfo(cardData)
+      console.log(doc);
+    } catch (error) {
+      
+    }
     console.log(this.profileForm.value);
   }
 
