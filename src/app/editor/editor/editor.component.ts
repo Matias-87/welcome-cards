@@ -1,5 +1,5 @@
 import { Component, OnChanges, OnInit, SimpleChanges, inject } from '@angular/core';
-import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { WelcomeCardComponent } from '../../welcome-card/welcome-card.component';
 import { CardsInfoService } from '../../data-access/cards-info.service';
 import { AsyncPipe } from '@angular/common';
@@ -21,19 +21,20 @@ export class EditorComponent {
 
   // cardsInfo$ = this._cardsInfoService.getCardsInfo();
 
-  profileForm = new FormGroup({
-    bgColor: new FormControl('#ffffff'),
-    textColor: new FormControl('#000000'),
-    underlineCheck: new FormControl(true),
-    underlineColor: new FormControl('#000000'),
-    borderCheck: new FormControl(true),
-    borderColor: new FormControl('#000000'),
-    textTitle: new FormControl(''),
-    textSize: new FormControl(110),
-    bgButtonColor: new FormControl('#000000'),
-    iconColor: new FormControl('#ffffff')
+  profileForm = this.formBuilder.group({
+    bgColor: ['#ffffff', Validators.required],
+    textColor: ['#000000', Validators.required],
+    underlineCheck: [true, Validators.required],
+    underlineColor: ['#000000'],
+    borderCheck: [true, Validators.required],
+    borderColor: ['#000000'],
+    textTitle: ['', Validators.required],
+    textSize: [110, Validators.required],
+    bgButtonColor: ['#000000', Validators.required],
+    iconColor: ['#ffffff', Validators.required]
   })
 
+  constructor(private formBuilder: FormBuilder) {}
 
   // styles: { color: string | undefined | null } = { color: '#ff0000' }
 
@@ -50,11 +51,12 @@ export class EditorComponent {
 
     try {
       const doc = await this._cardsInfoService.addCardInfo(cardData)
-      console.log(doc);
+      console.log(doc.id);
+      this.openNewTab(doc.id);
     } catch (error) {
       
     }
-    console.log(this.profileForm.value);
+    // console.log(this.profileForm.value);
   }
 
   isUnderlineChecked() {
@@ -67,5 +69,14 @@ export class EditorComponent {
     const borderColorControl = this.profileForm.get('borderColor');
     console.log(this.profileForm.value.borderCheck);
     !this.profileForm.value.borderCheck ? borderColorControl?.enable() : borderColorControl?.disable();
+  }
+
+  getCardData(): CardsData {
+    return this.profileForm.value as CardsData;
+  }
+
+  openNewTab(id: string) {
+    const newTab = window.open('/custom-card/' + id, '_blank');
+    newTab?.focus();
   }
 }

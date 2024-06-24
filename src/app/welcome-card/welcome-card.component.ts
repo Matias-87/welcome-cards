@@ -1,6 +1,7 @@
 import { NgStyle } from '@angular/common';
 import { Component, Input, OnChanges, SimpleChanges } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
+import { CardsData } from '../interfaces/cards-data.interface';
 
 @Component({
   selector: 'app-welcome-card',
@@ -10,7 +11,7 @@ import { FormControl, FormGroup } from '@angular/forms';
   styleUrls: ['./welcome-card.component.scss']
 })
 export class WelcomeCardComponent {
-  @Input() styleConfig: FormGroup | undefined;
+  @Input() styleConfig: CardsData | undefined;
 
   rotateClass: boolean = false;
 

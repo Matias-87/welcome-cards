@@ -4,7 +4,8 @@
         <h1 class="text-center display-4 m-4">Card Editor</h1>
         <form [formGroup]="profileForm">
             <div class="form-floating mb-3">
-                <textarea class="form-control" formControlName="textTitle" id="title-content" placeholder="Leave a comment here" ></textarea>
+                <textarea class="form-control" formControlName="textTitle" id="title-content"
+                    placeholder="Leave a comment here"></textarea>
                 <label for="title-content" class="text-secondary">Text Title</label>
             </div>
             <label for="text-Size" class="form-label">Max Font Size:</label>
@@ -55,9 +56,13 @@
                         value="#ffffff">
                 </div>
             </div>
+            <div class="d-grid gap-2 col-6 mx-auto">
+                <button class="btn btn-primary" type="submit" [disabled]="!profileForm.valid"
+                    (click)="onSubmit()">Submit</button>
+            </div>
         </form>
-        <button type="submit" [disabled]="!profileForm.valid" (click)="onSubmit()">Console.log()</button>
     </div>
     <div class="editor editor-card p-4 bg-dark border border-2 border-secondary-subtle overflow-hidden rounded-4">
-        <app-welcome-card [styleConfig]="profileForm"></app-welcome-card>
+        <app-welcome-card [styleConfig]="getCardData()"></app-welcome-card>
     </div>
+</div>
