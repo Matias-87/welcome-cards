@@ -1,8 +1,8 @@
 import { Injectable, inject } from '@angular/core';
 
-import { Firestore, addDoc, collection, collectionData } from '@angular/fire/firestore';
+import { Firestore, addDoc, collection, collectionData, doc, getDoc } from '@angular/fire/firestore';
 import { Observable } from 'rxjs';
-import { CardsData } from '../interfaces/cards-data.interface';
+import { Cards, CardsData } from '../interfaces/cards-data.interface';
 
 const PATH = 'cards-info'
 
@@ -20,5 +20,15 @@ export class CardsInfoService {
 
   addCardInfo(cardData: CardsData) {
     return addDoc(this._collection, cardData);
+  }
+
+  async getCardInfo(id: string) {
+    try {
+      const document = doc(this._firestore, PATH, id);
+      const snapshot = await getDoc(document);
+      return snapshot.data() as CardsData;
+    } catch (error) {
+      return undefined;
+    }
   }
 }
