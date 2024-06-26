@@ -30,8 +30,10 @@ export class EditorComponent {
     borderColor: ['#000000'],
     textTitle: ['', Validators.required],
     textSize: [110, Validators.required],
+    titleAlign: ['center', Validators.required],
     bgButtonColor: ['#000000', Validators.required],
-    iconColor: ['#ffffff', Validators.required]
+    iconColor: ['#ffffff', Validators.required],
+    roundedCheck: [true, Validators.required]
   })
 
   constructor(private formBuilder: FormBuilder) {}

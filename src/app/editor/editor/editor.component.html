@@ -3,37 +3,46 @@
         class="editor p-4 overflow-auto no-scroll text-light bg-dark border border-2 border-secondary-subtle rounded-4">
         <h1 class="text-center display-4 m-4">Card Editor</h1>
         <form [formGroup]="profileForm">
+            <h2>Front: </h2>
             <div class="form-floating mb-3">
                 <textarea class="form-control" formControlName="textTitle" id="title-content"
                     placeholder="Leave a comment here"></textarea>
                 <label for="title-content" class="text-secondary">Text Title</label>
             </div>
             <label for="text-Size" class="form-label">Max Font Size:</label>
-            <input type="range" formControlName="textSize" class="form-range" min="60" max="160" id="text-Size">
+            <input type="range" formControlName="textSize" class="form-range mb-3" min="60" max="160" id="text-Size">
+            <label for="title-align">Select a text align:</label>
+            <select id="title-align" formControlName="titleAlign" class="form-select mb-3"
+                aria-label="Default select example">
+                <option selected value="center">Center</option>
+                <option value="justify">Justify</option>
+                <option value="end">Right</option>
+                <option value="start">Left</option>
+            </select>
             <div class="row mb-3">
-                <div class="col">
+                <div class="col d-flex flex-column justify-content-between">
                     <label for="bg-color">Background Color: </label>
                     <input class="form-control" id="bg-color" type="color" formControlName="bgColor" value="#ffffff">
                 </div>
-                <div class="col">
+                <div class="col d-flex flex-column justify-content-between">
                     <label for="bg-text">Text Color: </label>
                     <input class="form-control" id="bg-text" type="color" formControlName="textColor" value="#ffffff">
                 </div>
             </div>
             <div class="row mb-3">
-                <div class="col">
+                <div class="col d-flex flex-column justify-content-between">
                     <label for="bg-button-color">Background Button Color: </label>
                     <input class="form-control" id="bg-button-color" type="color" formControlName="bgButtonColor"
                         value="#ffffff">
                 </div>
-                <div class="col">
+                <div class="col d-flex flex-column justify-content-between">
                     <label for="icon-color">Icon Color: </label>
                     <input class="form-control" id="icon-color" type="color" formControlName="iconColor"
                         value="#ffffff">
                 </div>
             </div>
             <div class="row mb-3">
-                <div class="col">
+                <div class="col d-flex flex-column justify-content-between">
                     <div class="form-check">
                         <input class="form-check-input" type="checkbox" value="" formControlName="underlineCheck"
                             id="underlineCheck" (click)="isUnderlineChecked()">
@@ -44,7 +53,7 @@
                     <input class="form-control" id="underline-color" type="color" formControlName="underlineColor"
                         value="#ffffff">
                 </div>
-                <div class="col">
+                <div class="col d-flex flex-column justify-content-between">
                     <div class="form-check">
                         <input class="form-check-input" type="checkbox" value="" formControlName="borderCheck"
                             id="boderCheck" (click)="isBorderChecked()">
@@ -56,6 +65,15 @@
                         value="#ffffff">
                 </div>
             </div>
+            <div class="form-check w-100 d-flex justify-content-center">
+                <input class="form-check-input m-1" type="checkbox" value="" formControlName="roundedCheck"
+                    id="roundedCheck">
+                <label class="form-check-label" for="roundedCheck">
+                    Border rounded
+                </label>
+            </div>
+            <hr>
+            <h2>Back: </h2>
             <div class="d-grid gap-2 col-6 mx-auto">
                 <button class="btn btn-primary" type="submit" [disabled]="!profileForm.valid"
                     (click)="onSubmit()">Submit</button>

@@ -13,4 +13,6 @@ export interface CardsData {
     textSize: number;
     underlineCheck: boolean;
     borderCheck: boolean;
+    titleAlign: string;
+    roundedCheck: boolean;
 }

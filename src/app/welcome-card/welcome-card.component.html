@@ -2,15 +2,17 @@
     <div [class.rotate]="rotateClass" class="box__content rotate2" [ngStyle]="{
             'background-color': styleConfig?.bgColor,
             'border': !styleConfig?.borderCheck ? 'none' : '5px solid',
-            'border-color': styleConfig?.borderColor
+            'border-color': styleConfig?.borderColor,
+            'border-radius': styleConfig?.roundedCheck ? '20px' : '0px',
         }">
         <div class="box__front">
             <div>
-                <h1 class="text-center text-break" [ngStyle]="{
+                <h1 class="text-break" [ngStyle]="{
                         'color': styleConfig?.textColor,
                         'text-decoration': !styleConfig?.underlineCheck ? 'none' : 'underline',
                         'text-decoration-color': styleConfig?.underlineColor,
-                        'font-size': 'min(10vw,' + styleConfig?.textSize +'px)'
+                        'font-size': 'min(10vw,' + styleConfig?.textSize +'px)',
+                        'text-align': styleConfig?.titleAlign,
                     }">
                     {{styleConfig?.textTitle}}
                 </h1>
