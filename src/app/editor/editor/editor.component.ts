@@ -1,5 +1,5 @@
 import { Component, OnChanges, OnInit, SimpleChanges, inject } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import { FormArray, FormBuilder, FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { WelcomeCardComponent } from '../../welcome-card/welcome-card.component';
 import { CardsInfoService } from '../../data-access/cards-info.service';
 import { AsyncPipe } from '@angular/common';
@@ -18,6 +18,7 @@ import { CardsData } from '../../interfaces/cards-data.interface';
 })
 export class EditorComponent {
   private _cardsInfoService = inject(CardsInfoService);
+  private idCounter = 0;
 
   // cardsInfo$ = this._cardsInfoService.getCardsInfo();
 
@@ -33,10 +34,15 @@ export class EditorComponent {
     titleAlign: ['center', Validators.required],
     bgButtonColor: ['#000000', Validators.required],
     iconColor: ['#ffffff', Validators.required],
-    roundedCheck: [true, Validators.required]
+    roundedCheck: [true, Validators.required],
+    backContent: this.formBuilder.array([this.formBuilder.group({
+      textTitleBack: ['', Validators.required],
+      textContentBack: ['', Validators.required],
+      id: 0
+    })])
   })
 
-  constructor(private formBuilder: FormBuilder) {}
+  constructor(private formBuilder: FormBuilder) { }
 
   // styles: { color: string | undefined | null } = { color: '#ff0000' }
 
@@ -47,18 +53,19 @@ export class EditorComponent {
   // }
 
   async onSubmit() {
-    if(this.profileForm.invalid) return;
+    if (this.profileForm.invalid) return;
 
     const cardData = this.profileForm.value as CardsData;
 
+    //Descomentar al terminar las pruebas
     try {
       const doc = await this._cardsInfoService.addCardInfo(cardData)
       console.log(doc.id);
       this.openNewTab(doc.id);
     } catch (error) {
-      
+
     }
-    // console.log(this.profileForm.value);
+    console.log(this.profileForm.value);
   }
 
   isUnderlineChecked() {
@@ -80,5 +87,21 @@ export class EditorComponent {
   openNewTab(id: string) {
     const newTab = window.open('/custom-card/' + id, '_blank');
     newTab?.focus();
+  }
+
+  createNewComponent() {
+    const backContent = this.profileForm.get('backContent') as FormArray;
+
+    backContent.push(this.formBuilder.group({
+      textTitleBack: ['', Validators.required],
+      textContentBack: ['', Validators.required],
+      id: this.idCounter++
+    }))
+  }
+
+  deleteBackComponent(idx: number) {
+    const backContent = this.profileForm.get('backContent') as FormArray;
+
+    backContent.removeAt(idx);
   }
 }

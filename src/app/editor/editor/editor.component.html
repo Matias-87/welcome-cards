@@ -74,7 +74,31 @@
             </div>
             <hr>
             <h2>Back: </h2>
-            <div class="d-grid gap-2 col-6 mx-auto">
+            <div formArrayName="backContent">
+                @for (content of profileForm.value.backContent; track content.id) {
+                <div class="bg-dark-subtle p-3 rounded-3 border border-2 border-black mb-3 ">
+                    <div [formGroupName]="$index">
+                        <div class="form-floating mb-3">
+                            <textarea class="form-control" formControlName="textTitleBack"
+                                id="title-content-back-{{$index}}" placeholder="Leave a comment here"></textarea>
+                            <label for="title-content-back-{{$index}}" class="text-secondary">Text Title</label>
+                        </div>
+                        <div class="form-floating mb-3">
+                            <textarea class="form-control" formControlName="textContentBack"
+                                id="text-content-back-{{$index}}" placeholder="Leave a comment here"></textarea>
+                            <label for="text-content-back-{{$index}}" class="text-secondary">Text Content</label>
+                        </div>
+                    </div>
+                    <button (click)="deleteBackComponent($index)" type="button" class="btn btn-danger w-100">
+                        Delete Component
+                    </button>
+                </div>
+                }
+            </div>
+            <button (click)="createNewComponent()" type="button" class="btn btn-outline-secondary w-100 mb-3">
+                Create New Component
+            </button>
+            <div class="d-grid gap-2 col-6 w-100">
                 <button class="btn btn-primary" type="submit" [disabled]="!profileForm.valid"
                     (click)="onSubmit()">Submit</button>
             </div>

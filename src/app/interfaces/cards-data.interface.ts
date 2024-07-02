@@ -1,4 +1,4 @@
-export interface Cards extends CardsData{
+export interface Cards extends CardsData {
     id: string;
 }
 
@@ -15,4 +15,11 @@ export interface CardsData {
     borderCheck: boolean;
     titleAlign: string;
     roundedCheck: boolean;
+    backContent: [
+        {
+            textTitleBack: string,
+            textContentBack: string
+        }
+    ]
+
 }

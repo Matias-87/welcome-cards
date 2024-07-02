@@ -27,7 +27,12 @@
                 'color': styleConfig?.iconColor,
                 'background-color': styleConfig?.bgButtonColor,
             }"></i>
-            <!-- <app-my-info></app-my-info> -->
+            @for (content of styleConfig?.backContent; track $index) {
+                <div>
+                    <h2>{{content.textTitleBack}}</h2>
+                    <p>{{content.textContentBack}}</p>
+                </div>
+            }
         </div>
     </div>
 </div>
