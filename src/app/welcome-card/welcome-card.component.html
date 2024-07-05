@@ -11,7 +11,7 @@
                         'color': styleConfig?.textColor,
                         'text-decoration': !styleConfig?.underlineCheck ? 'none' : 'underline',
                         'text-decoration-color': styleConfig?.underlineColor,
-                        'font-size': 'min(10vw,' + styleConfig?.textSize +'px)',
+                        'font-size': 'min(15vw,' + (styleConfig?.textTitle | fontSizeControl) +')',
                         'text-align': styleConfig?.titleAlign,
                     }">
                     {{styleConfig?.textTitle}}
