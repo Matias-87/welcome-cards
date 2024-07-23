@@ -10,7 +10,6 @@ export interface CardsData {
     textTitle: string;
     bgButtonColor: string;
     iconColor: string;
-    textSize: number;
     underlineCheck: boolean;
     borderCheck: boolean;
     titleAlign: string;
@@ -18,8 +17,13 @@ export interface CardsData {
     backContent: [
         {
             textTitleBack: string,
-            textContentBack: string
+            textContentBack: string,
+            underlineBackTitle: boolean
         }
-    ]
-
+    ];
+    backgroundContent: {
+        color1: string,
+        color2: string,
+        bgGradient: boolean
+    }
 }

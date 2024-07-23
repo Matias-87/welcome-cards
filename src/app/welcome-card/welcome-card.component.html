@@ -23,15 +23,21 @@
             </div>
         </div>
         <div class="box__back">
-            <i (click)="addRotateClass()" class="bi bi-arrow-clockwise icon-rotate rotateButton"[ngStyle]="{
+            <i (click)="addRotateClass()" class="bi bi-arrow-clockwise icon-rotate rotateButton" [ngStyle]="{
                 'color': styleConfig?.iconColor,
                 'background-color': styleConfig?.bgButtonColor,
             }"></i>
             @for (content of styleConfig?.backContent; track $index) {
-                <div>
-                    <h2>{{content.textTitleBack}}</h2>
-                    <p>{{content.textContentBack}}</p>
-                </div>
+            <div [ngStyle]="{
+                    'color': styleConfig?.textColor,
+                }">
+                <h2 [ngStyle]="{ 
+                        'text-decoration': !content.underlineBackTitle ? 'none' : 'underline',
+                        'text-decoration-color': styleConfig?.underlineColor,
+
+                    }">{{content.textTitleBack}}</h2>
+                <p>{{content.textContentBack}}</p>
+            </div>
             }
         </div>
     </div>

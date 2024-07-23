@@ -2,7 +2,7 @@ import { Component, OnChanges, OnInit, SimpleChanges, inject } from '@angular/co
 import { FormArray, FormBuilder, FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { WelcomeCardComponent } from '../../welcome-card/welcome-card.component';
 import { CardsInfoService } from '../../data-access/cards-info.service';
-import { AsyncPipe } from '@angular/common';
+import { AsyncPipe, NgStyle } from '@angular/common';
 import { CardsData } from '../../interfaces/cards-data.interface';
 
 @Component({
@@ -11,7 +11,8 @@ import { CardsData } from '../../interfaces/cards-data.interface';
   imports: [
     ReactiveFormsModule,
     WelcomeCardComponent,
-    AsyncPipe
+    AsyncPipe,
+    NgStyle
   ],
   templateUrl: './editor.component.html',
   styleUrl: './editor.component.scss'
@@ -30,7 +31,6 @@ export class EditorComponent {
     borderCheck: [true, Validators.required],
     borderColor: ['#000000'],
     textTitle: ['', Validators.required],
-    textSize: [110, Validators.required],
     titleAlign: ['center', Validators.required],
     bgButtonColor: ['#000000', Validators.required],
     iconColor: ['#ffffff', Validators.required],
@@ -38,8 +38,14 @@ export class EditorComponent {
     backContent: this.formBuilder.array([this.formBuilder.group({
       textTitleBack: ['', Validators.required],
       textContentBack: ['', Validators.required],
+      underlineBackTitle: [true, Validators.required],
       id: 0
-    })])
+    })]),
+    backgroundContent: this.formBuilder.group({
+      color1: ['#ffffff', Validators.required],
+      color2: ['#000000', Validators.required],
+      bgGradient: [true, Validators.required]
+    })
   })
 
   constructor(private formBuilder: FormBuilder) { }
@@ -80,6 +86,11 @@ export class EditorComponent {
     !this.profileForm.value.borderCheck ? borderColorControl?.enable() : borderColorControl?.disable();
   }
 
+  isGradientChecked() {
+    const color2 = this.profileForm.get('backgroundContent')?.get('color2');
+    !this.profileForm.value.backgroundContent?.bgGradient ? color2?.enable() : color2?.disable();
+  }
+
   getCardData(): CardsData {
     return this.profileForm.value as CardsData;
   }
@@ -95,6 +106,7 @@ export class EditorComponent {
     backContent.push(this.formBuilder.group({
       textTitleBack: ['', Validators.required],
       textContentBack: ['', Validators.required],
+      underlineBackTitle: [true, Validators.required],
       id: this.idCounter++
     }))
   }

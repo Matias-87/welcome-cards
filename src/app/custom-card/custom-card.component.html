@@ -1,5 +1,7 @@
-<div class="card-container">
+<div class="card-container" [ngStyle]="{
+    'background': !styles?.backgroundContent?.bgGradient ? styles?.backgroundContent?.color1 : 'linear-gradient('+ styles?.backgroundContent?.color1 + ',' + styles?.backgroundContent?.color2 + ')'
+}">
     @if (styles !== undefined) {
-        <app-welcome-card [styleConfig]="styles"></app-welcome-card>
+    <app-welcome-card [styleConfig]="styles"></app-welcome-card>
     }
 </div>

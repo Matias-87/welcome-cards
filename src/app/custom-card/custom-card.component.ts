@@ -3,12 +3,14 @@ import { Router } from '@angular/router';
 import { WelcomeCardComponent } from '../welcome-card/welcome-card.component';
 import { CardsInfoService } from '../data-access/cards-info.service';
 import { CardsData } from '../interfaces/cards-data.interface';
+import { NgStyle } from '@angular/common';
 
 @Component({
   selector: 'app-custom-card',
   standalone: true,
   imports: [
-    WelcomeCardComponent
+    WelcomeCardComponent,
+    NgStyle
   ],
   templateUrl: './custom-card.component.html',
   styleUrl: './custom-card.component.scss'

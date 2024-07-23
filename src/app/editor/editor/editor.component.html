@@ -1,4 +1,6 @@
-<div class="editor-container">
+<div class="editor-container" [ngStyle]="{
+    'background': !profileForm.value.backgroundContent?.bgGradient ? profileForm.value.backgroundContent?.color1 : 'linear-gradient('+ profileForm.value.backgroundContent?.color1 + ',' + profileForm.value.backgroundContent?.color2 + ')'
+}">
     <div
         class="editor p-4 overflow-auto no-scroll text-light bg-dark border border-2 border-secondary-subtle rounded-4">
         <h1 class="text-center display-4 m-4">Card Editor</h1>
@@ -9,10 +11,6 @@
                     placeholder="Leave a comment here"></textarea>
                 <label for="title-content" class="text-secondary">Text Title</label>
             </div>
-            <!-- eliminar lo siguiente  -->
-            <label for="text-Size" class="form-label">Max Font Size:</label>
-            <input type="range" formControlName="textSize" class="form-range mb-3" min="60" max="160" id="text-Size">
-            <!---->
             <label for="title-align">Select a text align:</label>
             <select id="title-align" formControlName="titleAlign" class="form-select mb-3"
                 aria-label="Default select example">
@@ -80,10 +78,17 @@
                 @for (content of profileForm.value.backContent; track content.id) {
                 <div class="bg-dark-subtle p-3 rounded-3 border border-2 border-black mb-3 ">
                     <div [formGroupName]="$index">
-                        <div class="form-floating mb-3">
+                        <div class="form-floating">
                             <textarea class="form-control" formControlName="textTitleBack"
                                 id="title-content-back-{{$index}}" placeholder="Leave a comment here"></textarea>
                             <label for="title-content-back-{{$index}}" class="text-secondary">Text Title</label>
+                        </div>
+                        <div class="form-check mb-3">
+                            <input class="form-check-input" type="checkbox" value=""
+                                formControlName="underlineBackTitle" id="title-back-underline-{{$index}}">
+                            <label class="form-check-label text-secondary" for="title-back-underline-{{$index}}">
+                                Underline Text Title
+                            </label>
                         </div>
                         <div class="form-floating mb-3">
                             <textarea class="form-control" formControlName="textContentBack"
@@ -100,6 +105,29 @@
             <button (click)="createNewComponent()" type="button" class="btn btn-outline-secondary w-100 mb-3">
                 Create New Component
             </button>
+            <hr>
+            <h2>Background:</h2>
+            <div formArrayName="backgroundContent">
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="" formControlName="bgGradient"
+                        id="bg-gradient" (click)="isGradientChecked()">
+                    <label class="form-check-label" for="bg-gradient">
+                        Gradient Background Color
+                    </label>
+                </div>
+                <div class="row mb-3">
+                    <div class="col d-flex flex-column justify-content-between">
+                        <label for="bg-color1">Color 1: </label>
+                        <input class="form-control" id="bg-color1" type="color" formControlName="color1"
+                            value="#ffffff">
+                    </div>
+                    <div class="col d-flex flex-column justify-content-between">
+                        <label for="bg-color2">Color 2: </label>
+                        <input class="form-control" id="bg-color2" type="color" formControlName="color2"
+                            value="#ffffff">
+                    </div>
+                </div>
+            </div>
             <div class="d-grid gap-2 col-6 w-100">
                 <button class="btn btn-primary" type="submit" [disabled]="!profileForm.valid"
                     (click)="onSubmit()">Submit</button>
