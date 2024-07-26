@@ -8,9 +8,8 @@
     padding: 20px;
     gap: 20px;
     width: 100%;
-    overflow: auto;
+    overflow: hidden;
     // color: white;
-    justify-content: space-around;
 }
 
 .editor {
@@ -27,6 +26,7 @@
 @media (max-width: 1300px) {
     .editor-container {
         flex-direction: column;
+        overflow: auto;
     }
 
     .editor {

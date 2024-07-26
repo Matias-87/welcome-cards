@@ -24,16 +24,16 @@ export class EditorComponent {
   // cardsInfo$ = this._cardsInfoService.getCardsInfo();
 
   profileForm = this.formBuilder.group({
-    bgColor: ['#ffffff', Validators.required],
-    textColor: ['#000000', Validators.required],
+    bgColor: ['#FFD275', Validators.required],
+    textColor: ['#541D1D', Validators.required],
     underlineCheck: [true, Validators.required],
-    underlineColor: ['#000000'],
+    underlineColor: ['#AA7849'],
     borderCheck: [true, Validators.required],
-    borderColor: ['#000000'],
-    textTitle: ['', Validators.required],
+    borderColor: ['#AA7849'],
+    textTitle: ['Texto de Ejemplo.', Validators.required],
     titleAlign: ['center', Validators.required],
-    bgButtonColor: ['#000000', Validators.required],
-    iconColor: ['#ffffff', Validators.required],
+    bgButtonColor: ['#AA7849', Validators.required],
+    iconColor: ['#541D1D', Validators.required],
     roundedCheck: [true, Validators.required],
     backContent: this.formBuilder.array([this.formBuilder.group({
       textTitleBack: ['', Validators.required],
@@ -42,8 +42,8 @@ export class EditorComponent {
       id: 0
     })]),
     backgroundContent: this.formBuilder.group({
-      color1: ['#ffffff', Validators.required],
-      color2: ['#000000', Validators.required],
+      color1: ['#E3655B', Validators.required],
+      color2: ['#FA6B37', Validators.required],
       bgGradient: [true, Validators.required]
     })
   })
