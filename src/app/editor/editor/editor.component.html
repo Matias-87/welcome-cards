@@ -11,6 +11,13 @@
                     placeholder="Leave a comment here"></textarea>
                 <label for="title-content" class="text-secondary">Text Title</label>
             </div>
+            <div class="mb-3">
+                <label for="fornt-img" class="form-label">Add an image:</label>
+                <input id="fornt-img" #fileInputFront (change)="onFileSelected($event)" class="form-control" type="file"
+                    accept=".jpg, .jpeg, .png">
+                <button type="button" [disabled]="profileForm.value.frontImg === null"
+                    (click)="deleteFrontImg(fileInputFront)" class="btn btn-danger mt-2">Delete Image</button>
+            </div>
             <label for="title-align">Select a text align:</label>
             <select id="title-align" formControlName="titleAlign" class="form-select mb-3"
                 aria-label="Default select example">
@@ -94,6 +101,14 @@
                             <textarea class="form-control" formControlName="textContentBack"
                                 id="text-content-back-{{$index}}" placeholder="Leave a comment here"></textarea>
                             <label for="text-content-back-{{$index}}" class="text-secondary">Text Content</label>
+                        </div>
+                        <div class="mb-3">
+                            <label for="back-img" class="form-label text-secondary">Add an image:</label>
+                            <input id="back-img" #fileInputBack (change)="onFileSelectedBack($event, $index)"
+                                class="form-control" type="file" accept=".jpg, .jpeg, .png">
+                            <button type="button" [disabled]="profileForm.value.backContent?.[$index]?.backImg === null"
+                                (click)="deleteBackImg($index, fileInputBack)" class="btn btn-danger mt-2">Delete
+                                Image</button>
                         </div>
                     </div>
                     <button (click)="deleteBackComponent($index)" type="button" class="btn btn-danger w-100">

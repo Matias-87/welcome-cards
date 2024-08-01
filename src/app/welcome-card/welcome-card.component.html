@@ -6,21 +6,22 @@
             'border-radius': styleConfig?.roundedCheck ? '20px' : '0px',
         }">
         <div class="box__front">
-            <div>
-                <h1 class="text-break" [ngStyle]="{
+            <h1 class="text-break" [ngStyle]="{
                         'color': styleConfig?.textColor,
                         'text-decoration': !styleConfig?.underlineCheck ? 'none' : 'underline',
                         'text-decoration-color': styleConfig?.underlineColor,
                         'font-size': 'min(15vw,' + (styleConfig?.textTitle | fontSizeControl) +')',
                         'text-align': styleConfig?.titleAlign,
                     }">
-                    {{styleConfig?.textTitle}}
-                </h1>
-                <i (click)="addRotateClass()" class="bi bi-arrow-clockwise icon-rotate rotateButton" [ngStyle]="{
+                {{styleConfig?.textTitle}}
+            </h1>
+            @if (styleConfig?.frontImg) {
+            <img [src]="styleConfig?.frontImg" alt="your image">
+            }
+            <i (click)="addRotateClass()" class="bi bi-arrow-clockwise icon-rotate rotateButton" [ngStyle]="{
                     'color': styleConfig?.iconColor,
                     'background-color': styleConfig?.bgButtonColor,
                 }"></i>
-            </div>
         </div>
         <div class="box__back">
             <i (click)="addRotateClass()" class="bi bi-arrow-clockwise icon-rotate rotateButton" [ngStyle]="{
@@ -37,6 +38,9 @@
 
                     }">{{content.textTitleBack}}</h2>
                 <p>{{content.textContentBack}}</p>
+                @if(content.backImg) {
+                <img [src]="content.backImg" alt="your back image">
+                }
             </div>
             }
         </div>

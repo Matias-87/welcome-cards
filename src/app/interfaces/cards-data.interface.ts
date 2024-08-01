@@ -5,6 +5,7 @@ export interface Cards extends CardsData {
 export interface CardsData {
     bgColor: string;
     textColor: string;
+    frontImg: null | ArrayBuffer | string;
     underlineColor: string;
     borderColor: string;
     textTitle: string;
@@ -18,7 +19,8 @@ export interface CardsData {
         {
             textTitleBack: string,
             textContentBack: string,
-            underlineBackTitle: boolean
+            underlineBackTitle: boolean,
+            backImg: null | ArrayBuffer | string
         }
     ];
     backgroundContent: {

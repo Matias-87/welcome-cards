@@ -22,6 +22,13 @@
         backface-visibility: hidden;
         height: 100%;
         padding: 20px;
+
+        img {
+            height: 50%;
+            width: 80%;
+            object-fit: contain;
+        }
+
     }
 
     &__back {
@@ -37,6 +44,18 @@
         overflow-y: scroll;
         scrollbar-width: none;
         -ms-overflow-style: none;
+
+        // .img-back-container {
+        //     width: 100%;
+        //     display: flex;
+        //     justify-content: center;
+
+            img {
+                height: 300px;
+                width: 100%;
+                object-fit: contain;
+            }
+        // }
     }
 
     &__back::-webkit-scrollbar {
@@ -75,16 +94,16 @@
 
 
 // h1 {
-    // color: white;
-    // font-size: clamp(50px, 25vw, 160px);
-    // font-size: 10vw;
-    // text-decoration: underline;
-    // text-decoration-color: red;
-    // flex-shrink: 0;
-    // object-fit: contain;
+// color: white;
+// font-size: clamp(50px, 25vw, 160px);
+// font-size: 10vw;
+// text-decoration: underline;
+// text-decoration-color: red;
+// flex-shrink: 0;
+// object-fit: contain;
 // }
 
-h1{
+h1 {
     text-align: right;
 }
 
@@ -107,9 +126,13 @@ h1{
     }
 }
 
-@media (max-height: 600px) {
-    // h1 {
-    //     // color: blue;
-    //     font-size: 20vh;
-    // }
+@media (min-width: 1300px) {
+    .img-back-container {
+        background: red;
+        height: 250px;
+
+        // img {
+        //     height: 100%;
+        // }
+    }
 }
